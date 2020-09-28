@@ -1,5 +1,5 @@
 //Variable
-var PageId = window.location.hash.substr(1);
+var PageId = window.location.hash.substr(1).toLowerCase();
 
 //Document load validation
 $( document ).ready(function() {
