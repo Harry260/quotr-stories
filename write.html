@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    
+    <title>Write your random story</title>
+    <link rel="icon" href="resources/fav.svg" sizes="16x16" type="image/png">
+</head>
+
+<body>
+    <header>
+
+        <div class="navbar float-nav">
+
+            <img src="resources/fav.svg" class="fav" alt="">
+            <div class="nav-write">
+                <a href="index.html">Home</a>
+                <a href="pages/editor.html">Create a page</a>
+            </div>
+
+            <div>
+                <a id="goPublish" href="javascript:void(0);" class="link-button">Publish</a>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="write-main">
+
+        <div class="welcome-section">
+            <img src="resources/heart.svg" class="heart-svg" alt="">
+            <p class="welcome-write">Write your ideas, stories or anything and make it delivered to random peoples to
+                make them motivated with your inspirational two line thoughts</p>
+        </div>
+
+        <div class="link-flex">
+            <div>
+                <img src="resources/link.svg" onclick="document.getElementById('lk-drop').style = 'display:flex;'" class="option-img link-it" title="Link your quortte to external site"
+                    alt="">
+                <div class="link-drop" id="lk-drop">
+                    <p style="color: lightgrey; margin-right: 5px;">http://</p>
+                    <input type="text" id="link-text" placeholder="tiny.cc/therw">
+                </div>
+
+                <script>
+                    window.addEventListener('mouseup',function(event){
+                    var pol = document.getElementById('lk-drop');
+                    if(event.target != pol && event.target.parentNode != pol){
+                        pol.style = '';
+                    }                        
+                }); 
+                </script>
+
+            </div>
+            <h1 data-placeholder="Write your Awesome title here!" title="Your catchy title!" contenteditable="true"
+                id="write-title"></h1>
+        </div>
+
+        <textarea oninput="auto_grow(this);" id="write-description" title="Your awesome description with maximum 55 letters."
+            placeholder="Write your super-duper idea, motivational story or anything here. Like, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis ac diam ut malesuada. Quisque non turpis dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce venenatis sodales lorem vitae laoreet. Maecenas ac sapien urna. Nulla vitae congue dolor. Maecenas eget justo gravida massa laoreet ornare. Aliquam vitae orci ut purus imperdiet fringilla eu ac mi. "></textarea>
+
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="flexbox">
+                <div class="left-box">
+                    <h1 class="foot-title">Quotr</h1>
+                    <p class="foot-para">Get random shuffled idea, qoutes and motivational stories right here. And, anyone, from anywhere can write stories without signing up!not enough? View all stories shuffled randomly @ our pics page. Also search for anthing. Get to picks page with the below button.</p>
+                </div>
+                <div class="right-box">
+                    <h1 class="foot-title br-srch">Search stories</h1>
+                
+                    <input id="search-picks" placeholder="COVID-19" type="text"><br>
+                    <button onclick="searchFromHome();" id="KeyGoHome" style="display: none;">Search</button>
+                    <nav>
+                        <a href="picks.html">Picks</a>
+                        <a href="write.html">Write</a>
+                        <a href="toc.html">Terms</a>
+                        <a href="about.html">About</a>
+                    </nav>
+
+                    <script>
+                        //Search redirect##
+
+                        var keyGo = document.getElementById("search-picks");
+                        keyGo.addEventListener("keyup", function(event) {
+                        if (event.keyCode === 13) {
+                            event.preventDefault();
+                            document.getElementById("KeyGoHome").click();
+                        }
+                        });
+                        function searchFromHome(){
+                            window.location = ('picks.html?=' + document.getElementById('search-picks').value)
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="progress-overlay" class="continue-panel">
+
+        <div class="con-sub">
+            <div class="warning-panel">
+                <h2>
+                    Yes, you are ready to go!
+                </h2>
+                <p>Hey there! You are going to publish your story. By publishing your story anyone across your world can
+                    see your story and, Thank you for contributing <b>to Quotr!</b> You will be soon able to see your
+                    page. You can close this window!</p>
+                 </div>
+        </div>
+
+    </div>
+
+    <!--firebase library cdn-->
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/config.js" type="text/JavaScript"></script>
+    <script src="js/script.js" type="text/JavaScript"></script>
+    <script src="js/write.js" type="text/JavaScript"></script>
+</body>
+
+</html>

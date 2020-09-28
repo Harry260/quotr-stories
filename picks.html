@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" href="resources/fav.svg" sizes="16x16" type="image/png">
+
+    <title>Quotr Home - Get random stories, ideas and hacks!</title>
+
+</head>
+
+<body>
+    <header>
+        <!--Navbar-->
+        <div class="navbar">
+            <img src="resources/fav.svg" class="fav" alt="" style="width: 36px; height: 36px;">
+            <input type="text" id="myFilter" class="SearchBox" onkeyup="SearchFor()" placeholder="Search by title.">
+        </div>
+        <div class="pick-head">
+            <h1>Have a look at the random picks</h1>
+            <p style="margin-bottom: 20px;">Hey! we have bought our random picks shuffled multiple times for you! or search for what you want.</p>
+            <a onclick="document.getElementById('myFilter').focus();" href="javascript:void(0)" class="get-start-btn">Search</a>
+        </div>
+    </header>
+    <main>
+
+        <div class="dividr" style="width: 100%;margin-top: 50px;"></div>
+        <div class="more-stories" style="max-height: auto;">
+            <div class="cards-js" id="stories-js"></div>
+        </div>
+        <div class="over-blur" style="position: fixed; bottom: 0; width: 100%; display: none;"></div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="flexbox">
+                <div class="left-box">
+                    <h1 class="foot-title">Quotr</h1>
+                    <p class="foot-para">Get random shuffled idea, qoutes and motivational stories right here. And, anyone, from anywhere can write stories without signing up!not enough? View all stories shuffled randomly @ our pics page. Also search for anthing. Get to picks page with the below button.</p>
+                </div>
+                <div class="right-box">
+                    <h1 class="foot-title br-srch">Search stories</h1>
+                
+                    <input id="search-picks" placeholder="COVID-19" type="text"><br>
+                    <button onclick="searchFromHome();" id="KeyGoHome" style="display: none;">Search</button>
+                    <nav>
+                        <a href="picks.html">Picks</a>
+                        <a href="write.html">Write</a>
+                        <a href="toc.html">Terms</a>
+                        <a href="about.html">About</a>
+                    </nav>
+
+                    <script>
+                        //Search redirect##
+
+                        var keyGo = document.getElementById("search-picks");
+                        keyGo.addEventListener("keyup", function(event) {
+                        if (event.keyCode === 13) {
+                            event.preventDefault();
+                            document.getElementById("KeyGoHome").click();
+                        }
+                        });
+                        function searchFromHome(){
+                            window.location = ('picks.html?=' + document.getElementById('search-picks').value)
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+    
+    <!--Animation cdn-->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/app.js" type="text/JavaScript"></script>
+    <script src="js/config.js" type="text/JavaScript"></script>
+    <script src="js/script.js" type="text/JavaScript"></script>
+
+    <script>
+        function SearchReset(){
+            if(window.location.search.substr(2) !== ''){
+                document.getElementById('myFilter').value = window.location.search.substr(2).replace(/%20/g, " ");
+                console.log("you've searched for " + document.getElementById('myFilter').value);
+                console.log('Quotr by Harry Tom');
+            }
+        }
+    </script>
+</body>
+</html>

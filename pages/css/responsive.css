@@ -1,0 +1,51 @@
+/*Screenwidth 900pixels*/
+@media (max-width:900px){
+.result-pane, .outr-prev{
+    padding: 0;
+}
+#rslt{
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+
+    resize: none;
+}
+}
+/*Screenwidth 600pixels*/
+@media (max-width:600px){
+
+.code-area{
+    width: 100%;
+    position: relative;
+    left: 3px;
+    height: 100vh;
+    top: 0px;
+}
+
+.navbar{
+    width: 100%;
+}
+
+.up-prev{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #1a1d21;
+    left: 0;
+    justify-content: space-between;
+}
+
+}
+
+/*Screenwidth 400pixels*/
+@media (max-width:400px){
+
+.pub-box{
+    width: 94%;
+    left: 3%;
+}
+
+}

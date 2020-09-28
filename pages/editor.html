@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="css/font.css">
+
+        <title>
+            Editor - Create your page on the fly
+        </title>
+
+        <link rel="icon" href="../resources/fav.svg" sizes="16x16" type="image/png">
+
+    </head>
+    <body onload="_init();">
+        <header>
+
+        </header>
+        <main class="main-tg" id="main-section">
+            <div class="code-area" id="code-area">
+                <div class="navbar">
+                    <div style="display: flex;">
+                        <input class="docTitle" id="proj-title" type="text" autocomplete="off" value="Untitled" placeholder="Document title">
+                        <p onclick="changeLang();" id="s-t" class="switch-tag">.html - body</p>
+                    </div>
+
+                    <div style="display: flex;" class="up-prev">
+
+                        <div style="display: flex;">
+                            <img src="resources/add.svg" title="Upload html code" class="opt" id="addhtml" onclick="$('#inputhtml').click();" alt="">
+                            <img src="resources/add.svg" title="Upload css code" style="display: none;" class="opt" id="addcss" onclick="$('#inputcss').click();" alt="">
+                            <img src="resources/add.svg" title="Upload JavaScript code" style="display: none;" class="opt" id="addjs" onclick="$('#inputjs').click();" alt="">
+                            
+                            <img src="resources/done.svg" title="publish" class="opt" onclick="document.getElementById('pub').style='visibility:visible;opacity:1;';" alt="">
+                        </div>
+
+                        <p class="tag-button" onclick="setCode();openPrev();">Preview →</p>
+
+                        <div style="display: none;">
+                            <input type="file" accept=".html" name="inputfile" id="inputhtml"> 
+                            <input type="file" accept=".css" name="inputcss" id="inputcss"> 
+                            <input type="file" accept=".js" name="inputjs" id="inputjs"> 
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <textarea 
+                    autocomplete="off" 
+                    class="code-textarea editor allow-tabs" 
+                    id="code" rows="10" cols="40" 
+                    oninput="auto_grow(this);onCapture();" 
+                >
+                </textarea>
+                <script>
+                    function auto_grow(element) {
+                        element.style.height = "10px";
+                        element.style.height = (element.scrollHeight)+"px";
+                        onCapture();
+                    }
+                </script>
+                
+
+            </div>
+            <div class="result-pane" id="rpane">
+                <div class="outr-prev">
+                    <div id="rslt">
+                        <!--Preview goes here-->
+                    </div>
+                </div>
+            </div>
+            <div class="publish" id="pub">
+                <div class="pub-box">
+                    <h1>Publish</h1>
+                    <p>Hey! are you ready to publish your site? Just publish it on the go!! But before that, choose a identifier for your site. eg. Pagr.ga/untitled-dco</p>
+                    <input autocomplete="off" type="text" id="ProjId">
+                    <div style="display: flex;justify-content: space-between;">
+                        <p id="statusAvilable">Check your id.</p>
+                        <div style="display: flex;" id="pub-lay">
+                            <p class="tag-button" onclick="ClosePrev();" title="Cancel">←</p>
+                            <script>
+                                function ClosePrev(){
+                                    document.getElementById('pub').style='visibility:hidden;opacity:0;'
+                                }
+                            </script>
+                            <p onclick="setCode();lo();" class="tag-button" id="publishgo" style="margin-left: 5px;" title="Publsh">Publish →</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="float" id="float-btn" onclick="document.getElementById('rpane').style='opacity: 0;visibility: hidden;transition: 0.4s;';document.getElementById('float-btn').style = 'opacity: 0;visibility: hidden;transition: 0.4s;';">Close</div>
+        </main>
+
+        <!--firebase library cdn-->
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/write.js"></script>
+
+    </body>
+</html>

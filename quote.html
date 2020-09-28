@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="css/font.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        <title>Quotr - Random stories</title>
+        <link rel="icon" href="resources/fav.svg" sizes="16x16" type="image/png">
+
+    </head>
+
+    <body>
+        <header>
+            <div class="navigation-bar qbar">
+                <a href="index.html">
+                    <img class="fav-q" src="resources/fav-invert.png" alt="Quotr">
+                </a>
+                <div></div>
+                <a id="remix" href="#" class="write-button">Remix →</a>
+
+        </header>
+
+        <main class="view-main">
+            <p id="view-date">26 December 2019</p>
+            <h1 class="view-title" id="view-title">
+                Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur
+            </h1>
+            <div class="panel-view">
+                <div>
+                    <img title="Report this story."  onclick="document.getElementById('pol-report').style = 'display:block'" class="option-img more-button"
+                        src="resources/flag.svg" alt="Report">
+                    <div class="more-drop" id="pol-report">
+
+                        <div class="report-drop">
+                            <h2>Not looking good?</h2>
+                            <p>Is this story not so good? You can flag it, ande we'll review it and disable this
+                                within 72 hours. </p>
+                            <a onclick="flag();" style="cursor: pointer;" class="write-button">Report</a>
+                        </div>
+                    </div>
+                    <script>
+                        window.addEventListener('mouseup',function(event){
+                        var pol = document.getElementById('pol-report');
+                        if(event.target != pol && event.target.parentNode != pol){
+                            pol.style = '';
+                        }                        
+                    }); 
+                    </script>
+                </div>
+                <img title="Comments." onclick="openComment();" class="option-img" src="resources/chat.svg" alt="Comment">
+                <div>
+                    <img title="Share this!" title="Share this!" onclick="document.getElementById('pol-share').style = 'display:block'" class="option-img more-button" src="resources/share.svg" alt="Share">
+                    <div class="more-drop share-cont" id="pol-share">
+                        <h2>Share</h2>
+                        <p>Share this article with your friends or others with your facebook or twitter account.</p>
+                        <div>
+                            <img onclick="shareTw(document.URL);" title="Share with Twitter." class="option-img twitter-share" src="resources/twitter.svg" alt="More">
+                            <img onclick="shareFb(document.URL);" title="Share with Facebook.."
+                            class="option-img facebook-share" src="resources/facebook.svg" alt="More">
+                        </div>
+                     </div>
+                </div>
+                <script>
+                    window.addEventListener('mouseup',function(event){
+                    var pol = document.getElementById('pol-share');
+                    if(event.target != pol && event.target.parentNode != pol){
+                        pol.style = '';
+                    }                           
+                }); 
+                </script>
+
+            </div>
+            <p class="view-description" id="view-description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dignissim laoreet enim, nec faucibus erat blandit nec. Sed vitae diam id leo lobortis gravida. Morbi nec lacinia eros. Nunc sit amet turpis mollis, feugiat ante nec, efficitur augue. Aenean facilisis orci sit amet arcu rhoncus pellentesque. Duis ultricies vehicula augue eget tempor. Suspendisse et elementum ipsum. Donec viverra porta dolor, et fermentum lectus molestie eget. Vestibulum volutpat tellus vel consectetur pellentesque. Aenean sed posuere libero. Aliquam in tortor convallis, maximus nulla sed, hendrerit nulla. Pellentesque sollicitudin nunc quis ante fermentum blandit eu ullamcorper est. Morbi viverra quam leo, non tincidunt ligula hendrerit quis. 
+            </p>
+        </main>
+        <footer style="position: relative;">
+            <div class="footer">
+                <div class="flexbox">
+                    <div class="left-box">
+                        <h1 class="foot-title">Quotr</h1>
+                        <p class="foot-para">Get random shuffled idea, qoutes and motivational stories right here. And, anyone, from anywhere can write stories without signing up!not enough? View all stories shuffled randomly @ our pics page. Also search for anthing. Get to picks page with the below button.</p>
+                    </div>
+                    <div class="right-box">
+                        <h1 class="foot-title br-srch">Search stories</h1>
+                    
+                        <input id="search-picks" placeholder="COVID-19" type="text"><br>
+                        <button onclick="searchFromHome();" id="KeyGoHome" style="display: none;">Search</button>
+                        <nav>
+                            <a href="picks.html">Picks</a>
+                            <a href="write.html">Write</a>
+                            <a href="toc.html">Terms</a>
+                            <a href="about.html">About</a>
+                        </nav>
+
+                        <script>
+                            //Search redirect##
+
+                            var keyGo = document.getElementById("search-picks");
+                            keyGo.addEventListener("keyup", function(event) {
+                            if (event.keyCode === 13) {
+                                event.preventDefault();
+                                document.getElementById("KeyGoHome").click();
+                            }
+                            });
+                            function searchFromHome(){
+                                window.location = ('picks.html?=' + document.getElementById('search-picks').value)
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="comment-section" id="com-sec">
+
+            <div class="comments">
+                <div class="top-bar-com">
+                    <div>
+                        <h1 class="com-h1">Comments</h1>
+                        <p>You're commenting publicly. So, make sure it is respectful.</p>
+                    </div>
+                    <img onclick="closeComment();" src="resources/close.svg" alt="Close">
+                </div>
+
+                <div class="comment-in input-section">
+                    <input placeholder="Your comment here.." id="comment-txt" ></input>
+                </div>
+
+                <div id="comment-js">
+                    <div class="comment-in">
+                        <p class="comment-content">
+                            Be the first one to respond to this.. 
+                         </p> 
+                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="splash" id="sp">
+            <div class="splash-sub">
+                <img src="resources/rocket-load.gif" alt="Loading..">
+                <h1>Getting ready</h1>
+                <p>Please wait while we are getting your article ready!</p>
+            </div>
+        </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+    <!--Animation cdn-->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/app.js" type="text/JavaScript"></script>
+    <script src="js/config.js" type="text/JavaScript"></script>
+    <script src="js/script.js" type="text/JavaScript"></script>
+    <script src="js/view.js" type="text/JavaScript"></script>
+    <script src="js/comment.js" type="text/JavaScript"></script>
+
+
+    </body>
+
+</html>

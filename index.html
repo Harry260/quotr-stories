@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Quotr Home - Get random stories, ideas and hacks!</title>
+
+    <link rel="icon" href="resources/fav.svg" sizes="16x16" type="image/png">
+
+</head>
+
+<body>
+    <div class="main-content">
+
+        <header>
+            <div class="navigation-bar qbar" id="qbar-home" style="z-index: 10;">
+                <a href="index.html">
+                    <img class="fav-q" src="resources/fav-invert.png" alt="Quotr">
+                </a>
+                <div></div>
+                <a id="remix" href="write.html" class="write-button">Write →</a>
+
+        </header>
+        <script>
+            window.onscroll = function() {scrollFunction()};
+
+                function scrollFunction() {
+                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                    document.getElementById('qbar-home').style = "display:flex !important;z-index:10;";
+                } else {
+                    document.getElementById('qbar-home').style = "display:none !important";
+                }
+                }
+        </script>
+
+
+        <section class="hero-content">
+
+            <!--Navbar-->
+            <div class="navbar">
+
+                <img src="resources/fav.svg" class="fav" alt="Quotr">
+                <div class="flex-right" id="nav-control-home">
+
+                    <!--Report button-->
+                    <div>
+                        <img title="Report this story." onclick="document.getElementById('pol-report').style = 'display:block'" class="option-img more-button"
+                            src="resources/flag.svg" alt="Report">
+                        <div class="more-drop" id="pol-report" >
+
+                            <div class="report-drop" >
+                                <h2>Not looking good?</h2>
+                                <p>Is this story not so good? You can flag it, ande we'll review it and disable this
+                                    within 72 hours. </p>
+                                <a onclick="flag('flaghome');" style="cursor: pointer;" class="write-button">Report</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        window.addEventListener('mouseup',function(event){
+                        var pol = document.getElementById('pol-report');
+                        if(event.target != pol && event.target.parentNode != pol){
+                            pol.style = '';
+                        }                        
+                    }); 
+                    </script>
+
+                    <!--Comment button-->
+                    <a href="" id="comment-preload">
+                        <img title="Comments." class="option-img" src="resources/chat.svg" alt="Comment">
+                    </a>
+
+                    <!--Next button-->
+                    <img title="One more!" onclick="_getNext();" class="option-img" src="resources/reload.svg"
+                        alt="next">
+
+                    <!--Share button-->
+                    <div>
+                        <img title="Share this!" onclick="document.getElementById('pol-share').style = 'display:block'"  class="option-img more-button" src="resources/share.svg" alt="Share">
+                        <div class="more-drop share-cont" id="pol-share" >
+                            <h2>Share</h2>
+                            <p>Share this article with your friends or others with your facebook or twitter account.</p>
+                            <div>
+                                <img data-js="twitter-share" title="Share with Twitter." class="option-img twitter-share"
+                                src="resources/twitter.svg" alt="More">
+                                <img data-js="facebook-share" title="Share with Facebook.."
+                                class="option-img facebook-share" src="resources/facebook.svg" alt="More">
+                       
+                            </div>
+                         </div>
+
+                         <script>
+                            window.addEventListener('mouseup',function(event){
+                            var pol = document.getElementById('pol-share');
+                            if(event.target != pol && event.target.parentNode != pol){
+                                pol.style = '';
+                            }                           
+                        }); 
+                        </script>
+                    </div>
+
+                    <!--Read more button-->
+                    <div>
+                        <img title="Read full." onclick="document.getElementById('pol-more').style = 'display:block'"  class="option-img more-button" id="read-under" src="resources/more.svg" alt="More">
+                        <div class="more-drop" id="pol-more">
+
+                            <div class="report-drop">
+                                <h2>Read more.</h2>
+                                <p>Hey! This is just a simple preview of this article. Click the below option to go to full article.</p>
+                                <a id="more-link" style="cursor: pointer;" class="write-button" href="javascript:void(0)">Read more</a>
+                            </div>
+                        </div>
+                        <script>
+                            window.addEventListener('mouseup',function(event){
+                            var pol = document.getElementById('pol-more');
+                            if(event.target != pol && event.target.parentNode != pol){
+                                pol.style = '';
+                            }                           
+                        }); 
+                        </script>
+                    </div>
+
+                    <!--Write for mobile width-->
+                    <a href="" id="write.html">
+                        <img title="Write article." class="option-img write-mobile" src="resources/write.svg" alt="+">
+                    </a>
+
+                </div>
+                <a id="write" href="write.html" class="write-button">Write →</a>
+            </div>
+            <div class="hero-inner-content" data-aos="fade-up"data-aos-anchor-placement="center-bottom">
+                <div class="content" >
+                    <h1 id="title">
+                    </h1>
+                    <p id="sub-txt">
+                    </p>
+                    <a id="more-link-sub" style="cursor: pointer;" class="write-button" href="javascript:void(0)">Read more</a>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="intro">
+            <div class="intro-inner">
+                <h1>Make yourself smart&nbsp;🤓<br> with Random ideas!</h1>
+                <p class="intro-p">
+                    Hey, are you tired? Get smart with our random ideas and hacks. Also make people across the world, smarter.. with your idea without signing up!
+                </p>
+                <a href="write.html" class="get-start-btn">Start Writing.</a>
+            </div>
+        </div>
+
+        <div class="more-stories">
+
+            <div class="cards-js" style="max-height: 200vh;" id="stories-js">
+
+                <!--Story cards-->
+            </div>
+            <div class="over-blur">
+
+            </div>
+            <div class="wanna-read-more">
+                <div class="dividr"></div>
+                <p>
+                    Hey, not enough? View all stories shuffled randomly @ our pics page. Also search for anthing. Get to picks page with the below button.
+                </p>
+                <a href="picks.html" class="get-start-btn picks-a">View picks.</a>
+            </div>
+        </div>
+
+        <div class="index-page">
+            <div class="txt-content" data-aos="fade-up"data-aos-anchor-placement="center-bottom">
+                <p class="gradient-tag">Get smarter</p>
+                <h1 class="hero-header">CREATE PAGES, <br> ON THE FLY!</h1>
+                <p class="hero-sub">With Quotr pages, Create simple and powerful html pages faster and easier!</p>
+                <a href="pages/editor.html" class="cod-link">Start coding →</a>
+            </div>
+            <img class="mock" data-aos="fade-up"data-aos-anchor-placement="center-bottom" src="resources/mock.svg" alt="">
+        </div>
+        <footer >
+            <div class="footer" style="margin-top: 0;">
+                <div class="flexbox">
+                    <div class="left-box">
+                        <h1 class="foot-title">Quotr</h1>
+                        <p class="foot-para">Get random shuffled idea, qoutes and motivational stories right here. And, anyone, from anywhere can write stories without signing up!not enough? View all stories shuffled randomly @ our pics page. Also search for anthing. Get to picks page with the below button.</p>
+                    </div>
+                    <div class="right-box">
+                        <h1 class="foot-title br-srch">Search stories</h1>
+                    
+                        <input id="search-picks" placeholder="COVID-19" type="text"><br>
+                        <button onclick="searchFromHome();" id="KeyGoHome" style="display: none;">Search</button>
+                        <nav>
+                            <a href="picks.html">Picks</a>
+                            <a href="write.html">Write</a>
+                            <a href="mailto:harrytom2606@gmail.com">Support</a>
+                            <a href="about.html">About</a>
+                        </nav>
+
+                        <script>
+                            //Search redirect##
+
+                            var keyGo = document.getElementById("search-picks");
+                            keyGo.addEventListener("keyup", function(event) {
+                            if (event.keyCode === 13) {
+                                event.preventDefault();
+                                document.getElementById("KeyGoHome").click();
+                            }
+                            });
+                            function searchFromHome(){
+                                window.location = ('picks.html?=' + document.getElementById('search-picks').value)
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!--firebase library cdn-->
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+    <!--Animation cdn-->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/app.js" type="text/JavaScript"></script>
+    <script src="js/config.js" type="text/JavaScript"></script>
+    <script src="js/script.js" type="text/JavaScript"></script>
+
+</body>
+
+</html>
