@@ -720,9 +720,6 @@
 
 /*Page::Picks*/
 
-.cards-js:empty{
-    background-color: #24292e;
-}
 
 .pick-head{
     padding:10px 65px;
