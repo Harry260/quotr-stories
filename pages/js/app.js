@@ -21,8 +21,6 @@ function changeLang(){
         document.getElementById('s-t').textContent = '.html - head'
         document.getElementById('s-t').style.backgroundColor = '#0366d6';
         document.getElementById('code').value = _head;
-        document.getElementById('addhtml').style = 'display:block';
-
     }
     else if (stat == 'hd'){
         stat = 'c';
