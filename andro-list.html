@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" href="resources/fav.svg" sizes="16x16" type="image/png">
+
+    <title>Quotr Home - Get random stories, ideas and hacks!</title>
+
+</head>
+
+<body>
+    <header>
+        <!--Navbar-->
+        <div class="navbar">
+            <input type="text" id="myFilter" class="SearchBox" style='z-index:10;width:96.0%;' onkeyup="SearchFor()" placeholder="Search by title.">
+        </div>
+    </header>
+    <main>
+        <div class="more-stories" style="max-height: auto;">
+            <div class="cards-js" style='padding-top:5px !important'  id="stories-js">
+            	<img src='pages/resources/preload.gif' style='width:100px;margin:0 auto;'>
+            </div>
+        </div>
+        <div class="over-blur" style="position: fixed; bottom: 0; width: 100%; display: none;"></div>
+    </main>
+                    <script>
+                        //Search redirect##
+
+                        var keyGo = document.getElementById("search-picks");
+                        keyGo.addEventListener("keyup", function(event) {
+                        if (event.keyCode === 13) {
+                            event.preventDefault();
+                            document.getElementById("KeyGoHome").click();
+                        }
+                        });
+                        function searchFromHome(){
+                            window.location = ('picks.html?=' + document.getElementById('search-picks').value)
+                        }
+                    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+    
+    <!--Animation cdn-->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/app.js" type="text/JavaScript"></script>
+    <script src="js/config.js" type="text/JavaScript"></script>
+    <script src="js/script.js" type="text/JavaScript"></script>
+
+    <script>
+        function SearchReset(){
+            if(window.location.search.substr(2) !== ''){
+                document.getElementById('myFilter').value = window.location.search.substr(2).replace(/%20/g, " ");
+                console.log("you've searched for " + document.getElementById('myFilter').value);
+                console.log('Quotr by Harry Tom');
+            }
+        }
+    </script>
+</body>
+</html>
