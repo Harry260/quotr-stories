@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="css/font.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+        <title>Quotr - Random stories</title>
+        <link rel="icon" href="resources/fav.svg" sizes="16x16" type="image/png">
+
+    </head>
+
+    <body onload='GetValApi()'>
+     
+        <script>
+
+	    var hashval = location.hash.substring(1);
+	    GetValApi();
+	    
+	    function GetValApi(){
+	    	    firebase.database().ref('stories/' + hashval).on('value', function (snapshot) {
+
+		document.title = snapshot.val().Title + ' ##%## ' + snapshot.val().Description + ' ##%## ' + snapshot.val().Date + ' ##%## ' + 		snapshot.val().Comment + ' ##%## ' + snapshot.val().Link + ' ##%## ' + snapshot.val().Ip;
+	    });
+	    }
+
+
+        </script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+    <!--Animation cdn-->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/app.js" type="text/JavaScript"></script>
+    <script src="js/config.js" type="text/JavaScript"></script>
+    <script src="js/script.js" type="text/JavaScript"></script>
+    <script src="js/view.js" type="text/JavaScript"></script>
+    <script src="js/comment.js" type="text/JavaScript"></script>
+
+
+    </body>
+
+</html>
