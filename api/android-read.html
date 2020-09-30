@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Quotr - Random stories</title>
+        <link rel="icon" href="resources/fav.svg" sizes="16x16" type="image/png">
+        
+
+    </head>
+
+    <body onload='GetValApi()'>
+    Value return on title.
+     
+        <script>
+
+	    var hashval = location.hash.substring(1);
+	    GetValApi();
+	    
+	    function GetValApi(){
+	    	    firebase.database().ref('stories/' + hashval).on('value', function (snapshot) {
+
+		document.title = snapshot.val().Title + ' ##%## ' + snapshot.val().Description + ' ##%## ' + snapshot.val().Date + ' ##%## ' + 		snapshot.val().Comment + ' ##%## ' + snapshot.val().Link + ' ##%## ' + snapshot.val().Ip;
+	    });
+	    }
+
+
+        </script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/app.js" type="text/JavaScript"></script>
+    <script src="../js/config.js" type="text/JavaScript"></script>
+    <script src="../js/script.js" type="text/JavaScript"></script>
+    <script src="../js/view.js" type="text/JavaScript"></script>
+    <script src="../js/comment.js" type="text/JavaScript"></script>
+
+
+    </body>
+
+</html>
