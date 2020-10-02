@@ -12,6 +12,7 @@ const d = new Date();
 const defData = window.location.search.substr(2).split('&split&');
 var rec_list;
 var new_story_list;
+var alist;
 
 //get month in letter
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -92,7 +93,10 @@ function setlist(){
     firebase.database().ref('list').once('value', function (snapshot) {
         rec_list = snapshot.val().home_list;
         new_story_list = '<div class="card-box"  <!--attr-space--> ><p class="card-date" >'+ date + '</p><h1 class="card-title">' + title + '</h1><p class="card-para" >' + description + '</p><a class="card-btn" href="' + storyLink + '">Read more</a></div>' + '<!--Shuffle gap-->' + rec_list;
+        var android_listx = title + ' <<split>> ' + id + ' <<split>> ' + date;
+        alist = android_listx.replace(/\./g, '<<dot>>').replace(/#/g, '<<hash>>').replace(/\[/g, '<<leftbar>>').replace(/]/g, '<<rightbar>>').replace(/\$/g, '<<doller>>').replace(/ /g, '<<space>>').replace(/\//g, '<<slash>>');
         additem(new_story_list);
+        addAndroidList();
     });
 }
 
@@ -101,6 +105,10 @@ function setlist(){
 function additem(item){
 
     firebase.database().ref('list').update({
-        home_list:item
+        home_list:item,
+    });
+
+    firebase.database().ref('android-list/' + id ).set({
+        data:alist,
     });
 }
